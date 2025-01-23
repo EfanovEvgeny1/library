@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Библиотека - Выданные книги (студент)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+      body {
+    font-family: 'Playfair Display', serif; /* Или другой классический шрифт */
+    background-color: #f8f9fa;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.table th, .table td {
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #337ab7;
+    color: white;
+    font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Анимация (animate.css требуется) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate__animated.animate__fadeInUp {
+    animation: fadeInUp 1s ease;
+}
+
+    </style>
+</head>
+<body>
+    {% include "library/navbarstudent.html" %}
+
+    <div class="container mt-5">
+        <h3 class="text-center mb-4 animate__animated animate__fadeInUp">Выданные Вам книги</h3>
+        {% if li1 %}
+            <div class="row">
+                <div class="col-lg-6">
+                    <table class="table table-bordered table-striped animate__animated animate__fadeInUp">
+                        <thead>
+                            <tr>
+                                <th>Имя</th>
+                                <th>Зачисление</th>
+                                <th>Ветка</th>
+                                <th>Название книги</th>
+                                <th>Автор</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in li1 %}
+                                <tr>
+                                    <td>{{ t.0 }}</td>
+                                    <td>{{ t.1 }}</td>
+                                    <td>{{ t.2 }}</td>
+                                    <td>{{ t.3 }}</td>
+                                    <td>{{ t.4 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-6">
+                    <table class="table table-bordered table-striped animate__animated animate__fadeInUp">
+                        <thead>
+                            <tr>
+                                <th>Дата выдачи</th>
+                                <th>Дата возврата</th>
+                                <th>Штраф</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in li2 %}
+                                <tr>
+                                    <td>{{ t.0 }}</td>
+                                    <td>{{ t.1 }}</td>
+                                    <td>{{ t.2 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center animate__animated animate__fadeInUp">Вам не выдали ни одной книги.</div>
+        {% endif %}
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

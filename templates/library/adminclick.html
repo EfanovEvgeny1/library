@@ -1,0 +1,56 @@
+{% extends 'library/base.html' %}
+{% load static %}
+
+{% block title %}Админ{% endblock %}
+
+{% block extra_css %}
+<style media="screen">
+  .jumbotron {
+            padding: 4rem 2rem; /* Увеличенные отступы */
+            background-color: #f8f9fa; /* Светлый фон */
+            border-radius: 10px; /* Скругленные углы */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Тень */
+            text-align: center; /* Выравнивание текста по центру */
+        }
+        .jumbotron h1 {
+            font-weight: 600; /* Более жирный заголовок */
+            margin-bottom: 2rem;
+        }
+        .jumbotron p {
+            font-size: 1.1rem; /* Увеличенный размер текста */
+            line-height: 1.6; /* Расстояние между строками */
+            margin-bottom: 2rem;
+        }
+        .jumbotron .btn {
+            margin: 0 0.5rem; /* Отступы между кнопками */
+            padding: 1rem 2rem; /* Увеличенные отступы кнопок */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Цвет Bootstrap */
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0069d9; /* Более темный цвет при наведении */
+            border-color: #0062cc;
+        }
+</style>
+{% endblock %}
+
+{% block nav-global %}
+{% include "library/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron mt-5">
+      <h1 class="display-4">Привет, администратор</h1>
+      <p class="lead">Добро пожаловать в систему управления онлайн-библиотекой.</p>
+      <hr class="my-4">
+      <p>Вы можете получить доступ к различным функциям после входа в систему / регистрации.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="adminsignup" role="button">Регистрация</a>
+        <a class="btn btn-primary btn-lg" href="adminlogin" role="button">Авторизоваться</a>
+      </p>
+  </div>
+</div>
+{% endblock %}

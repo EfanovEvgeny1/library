@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Библиотека - Сообщение отправлено</title>
+    <style>
+      body {
+    font-family: 'Playfair Display', serif; /* Или другой классический шрифт */
+    background-color: #f8f9fa;
+}
+
+.jumbotron {
+    background-color: white; /* Убираем фон jumbotron */
+    border-radius: 10px;   /* Скругленные углы */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+/* Анимация: используем animate.css (нужно подключить) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate__animated.animate__fadeInUp {
+    animation: fadeInUp 1s ease; /* 1 секунда, плавно */
+}
+
+/* Стиль для кнопки */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #0069d9;
+    padding: 1rem 2rem; /* Увеличиваем отступы внутри кнопки */
+}
+
+.btn-primary:hover {
+    background-color: #0062cc;
+    border-color: #005cbf;
+}
+
+
+    </style>
+</head>
+<body>
+
+    {% include "library/navbar.html" %}
+
+    <div class="container mt-5">
+        <div class="jumbotron jumbotron-fluid shadow-lg p-3 mb-5 bg-white rounded animate__animated animate__fadeInUp">
+            <div class="container">
+                <h1 class="display-4 text-center">Ваше сообщение успешно отправлено!</h1>
+                <p class="lead text-center">Мы ответим на ваш отзыв в ближайшее время.</p>
+                <hr class="my-4">
+                <p class="text-center">Ознакомьтесь с другими функциями веб-сайта!</p>
+                <div class="text-center">
+                  <a class="btn btn-primary btn-lg" href="/" role="button">На главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

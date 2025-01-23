@@ -1,0 +1,120 @@
+{% extends 'library/base.html' %}
+{% load static %}
+
+{% block title %}Добавить книгу{% endblock %}
+{% block extra_css %}
+<style>
+	body {
+		color: #aa082e;
+		background-color: #b6bde7;
+		font-family: 'Roboto', sans-serif;
+	}
+	.form-control {
+		border-color: #eee;
+		min-height: 41px;
+		box-shadow: none;
+		border-radius: 0.3rem; /* Скругленные углы */
+	}
+	.form-control:focus {
+		border-color: #5cd3b4;
+		box-shadow: 0 0 0 0.2rem rgba(100,200,150,.25); /* Добавлено свечение при фокусе */
+	}
+	.btn {
+		border-radius: 0.3rem; /* Скругленные углы */
+	}
+	.signup-form {
+		max-width: 500px; /* max-width вместо width */
+		margin: 4rem auto; /* Улучшенное margin */
+		padding: 30px;
+		border-radius: 10px; /* Скругленные углы */
+		background-color: #fff;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Тень */
+
+	}
+	.signup-form h2 {
+		color: #333;
+		margin-bottom: 2rem;
+		border-bottom: 3px solid #ffffff;
+		padding-bottom: 0.5rem;
+	}
+	.signup-form form {
+		color: #999;
+	}
+	.signup-form .form-group {
+		margin-bottom: 1rem; /* Улучшенный отступ */
+	}
+	.signup-form label {
+		font-weight: normal;
+		font-size: 14px;
+		display: block; /* Label на новой строке */
+		margin-bottom: 0.5rem;
+	}
+	.signup-form input[type="checkbox"] {
+		margin-top: 0.2rem;
+	}
+	.signup-form .btn {
+		font-size: 16px;
+		font-weight: bold;
+		background: #161df0;
+		border: none;
+		margin-top: 2rem;
+		min-width: 140px;
+		transition: background-color 0.3s ease;
+	}
+	.signup-form .btn:hover, .signup-form .btn:focus {
+		background: #41cba9;
+		outline: none;
+	}
+	.signup-form a {
+		color: #2b04ff;
+		text-decoration: underline;
+		transition: color 0.3s ease;
+        }
+        .signup-form a:hover {
+            text-decoration: none;
+            color: #555; /* Пример */
+        }
+        .signup-form form a {
+            color: #5cd3b4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .signup-form form a:hover {
+            text-decoration: underline;
+            color: #333; /* Пример */
+        }
+        .signup-form .text-center {
+            margin-top: 2rem;
+        }
+</style>
+{% endblock %}
+
+{% block nav-global %}
+{% include "library/navbaradmin.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="alert alert-success text-center mt-3" role="alert">
+		Добавить книгу в библиотеку
+	</div>
+	<div class="signup-form">
+		<form method="post" class="form-horizontal">
+			{% csrf_token %}
+			<h2>Добавить книгу в библиотеку</h2>
+			{% for field in form %}
+				<div class="form-group">
+					<label>{{ field.label_tag }}</label>  <!-- Упрощено -->
+					{{ field }}
+				</div>
+			{% endfor %}
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-lg">Добавить</button>
+			</div>
+		</form>
+		<div class="text-center">
+			Просмотр доступной книги в библиотеке <a href="viewbook">Нажми здесь</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

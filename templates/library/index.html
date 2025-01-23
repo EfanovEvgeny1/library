@@ -1,0 +1,74 @@
+{% extends 'library/base.html' %}
+{% load static %}
+
+{% block title %}Система управления библиотекой{% endblock %}
+
+{% block extra_css %}
+<style>
+  .jumbotron {
+        padding: 4rem 2rem; /* Увеличенные отступы */
+        background-color: #f8f9fa; /* Светлый фон */
+        border-radius: 10px; /* Скругленные углы */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Тень */
+      }
+      .jumbotron h1 {
+        font-weight: 600; /* Более жирный заголовок */
+        margin-bottom: 2rem;
+      }
+      .jumbotron p {
+        font-size: 1.1rem; /* Увеличенный размер текста */
+        line-height: 1.6; /* Расстояние между строками */
+        margin-bottom: 3rem;
+      }
+      .jumbotron img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px; /* Скругленные углы изображений */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Тень для изображений */
+        margin-bottom: 1rem;
+      }
+      .btn-primary {
+        background-color: #007bff; /* Цвет Bootstrap */
+        border-color: #007bff;
+        padding: 1rem 2rem;
+      }
+      .btn-primary:hover {
+        background-color: #0069d9; /* Более темный цвет при наведении */
+        border-color: #0062cc;
+      }
+      /* Медиа-запросы для адаптации на маленьких экранах */
+      @media (max-width: 768px) {
+        .row {
+          flex-direction: column; /* Изображения отображаются друг под другом */
+        }
+        .col-lg-6 {
+          width: 100%; /* Каждая колонка занимает всю ширину */
+          margin-bottom: 2rem; /* Отступ между колонками */
+        }
+      }
+</style>
+{% endblock %}
+
+{% block nav-global %}
+  {% include "library/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron text-center mt-5">
+    <h1 class="display-4">Здравствуй, читатель!</h1>
+    <p class="lead">Сервис, предназначенный для администраторов и студентов. Мы предоставляем онлайн-ресурсы, профессиональную поддержку и рекомендации всем нашим студентам в любое время и из любого места, которое они выбрали для обучения.</p>
+    <hr class="my-4">
+    <div class="row">
+      <div class="col-lg-6">
+        <img src="{% static 'images/Admin-icon.png' %}" class="img-fluid" alt="Admin">
+        <a class="btn btn-primary btn-lg mt-3" href="/adminclick" role="button">Админ</a>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'images/student.png' %}" class="img-fluid" alt="Student">
+        <a class="btn btn-primary btn-lg mt-3" href="/studentclick" role="button">Студент</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

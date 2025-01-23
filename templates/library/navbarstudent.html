@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Классический шрифт */
+        }
+        .navbar {
+            background-color: #333; /* Темный фон */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Небольшая тень */
+            transition: background-color 0.3s ease; /* Плавный переход цвета фона */
+        }
+        .navbar:hover {
+            background-color: #444; /* Более темный цвет при наведении */
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .nav-link {
+            color: #fff; /* Белый текст */
+            transition: color 0.3s ease; /* Плавный переход цвета текста */
+        }
+        .nav-link:hover {
+            color: #ddd; /* Светло-серый цвет при наведении */
+        }
+        .dropdown-menu {
+            background-color: #333; /* Темный фон выпадающего меню */
+            border: none;
+        }
+        .dropdown-item {
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background-color: #555; /* Более темный цвет при наведении */
+            color: #fff;
+        }
+        .navbar-nav .nav-item {
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Библиотека</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/"></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Выход из системы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutus">О нас</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Bootstrap 5 JS (необязательно, для выпадающих списков) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

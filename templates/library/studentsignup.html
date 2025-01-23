@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Библиотека - Регистрация студента</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>  <!-- Подключаем animate.css -->
+    <style>
+      body {
+    font-family: 'Playfair Display', serif; /* Или другой классический шрифт */
+    background-color: #f8f9fa;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: #337ab7; /* Синий цвет */
+    border-color: #2e6da4;
+}
+
+.btn-primary:hover {
+    background-color: #286090;
+    border-color: #265688;
+}
+
+/* Анимация (animate.css требуется) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate__animated.animate__fadeInUp {
+  animation: fadeInUp 1s ease;
+}
+
+    </style>
+</head>
+<body>
+    {% include "library/navbar.html" %}
+
+    <div class="container mt-5">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Регистрация студента</h2>
+                <form method="post" class="form-horizontal">
+                    {% csrf_token %}
+                    {% for field in form1 %}
+                        <div class="form-group row">
+                            <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">{{ field.label_tag }}</label>
+                            <div class="col-sm-8">
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="text-danger">{{ field.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for field in form2 %}
+                        <div class="form-group row">
+                            <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">{{ field.label_tag }}</label>
+                            <div class="col-sm-8">
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="text-danger">{{ field.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="form-group row">
+                        <div class="col-sm-8 offset-sm-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Зарегистрироваться</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    Уже есть аккаунт? <a href="studentlogin" class="btn btn-link">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

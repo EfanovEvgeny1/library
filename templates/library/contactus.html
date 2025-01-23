@@ -1,0 +1,85 @@
+{% extends 'library/base.html' %}
+{% load static %}
+
+{% block title %}Библиотека - Обратная связь{% endblock %}
+
+{% block extra_css %}
+<style>
+body {
+    font-family: 'Lora', serif; /* Или другой классический шрифт */
+    background-color: #f8f9fa;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-form label {
+    font-weight: bold;  /* Выделение label */
+}
+
+.feedback-form input, .feedback-form textarea {
+    border-radius: 5px; /* Скругленные углы */
+    border-color: #ced4da; /* Серый цвет границы */
+}
+
+.feedback-form input:focus, .feedback-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Подсветка при фокусе */
+}
+
+/* Анимация отправки формы (CSS) */
+.feedback-form.sending button {
+    opacity: 0.5;
+    pointer-events: none; /* Блокируем клики во время отправки */
+}
+
+</style>
+{% endblock %}
+{% block nav-global %}
+  {% include "library/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Оставьте свой отзыв</h2>
+                <form method="POST" class="feedback-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      document.querySelector('.feedback-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Предотвращаем стандартную отправку формы
+    this.classList.add('sending'); // Добавляем класс для анимации отправки
+    // Здесь можно добавить код для отправки формы AJAX
+    setTimeout(() => {
+        this.classList.remove('sending');
+        this.reset(); // Очищаем форму после отправки (можете убрать, если нужно)
+        alert('Сообщение отправлено!');
+    }, 1000); // Симулируем задержку 2 секунды
+});
+
+    </script>
+{% endblock %}
+

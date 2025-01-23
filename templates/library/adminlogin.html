@@ -1,0 +1,125 @@
+{% extends 'library/base.html' %}
+{% load static %}
+
+{% block title %}Вход администратора{% endblock %}
+
+{% block extra_css %}
+    <style>
+        body {
+            color: #aa082e;
+            background-color: #b6bde7;
+            font-family: 'Roboto', sans-serif;
+        }
+        .form-control {
+            border-color: #eee;
+            min-height: 41px;
+            box-shadow: none;
+            border-radius: 0.3rem;
+        }
+        .form-control:focus {
+            border-color: #5cd3b4;
+            box-shadow: 0 0 0 0.2rem rgba(100, 200, 150, 0.25);
+        }
+        .btn {
+            border-radius: 0.3rem;
+        }
+        .signup-form {
+            max-width: 500px;
+            margin: 4rem auto;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .signup-form h2 {
+            color: #333;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #ffffff;
+            padding-bottom: 0.5rem;
+            text-align: center; /* Центрирование заголовка */
+        }
+        .signup-form form {
+            color: #999;
+        }
+        .signup-form .form-group {
+            margin-bottom: 1rem;
+        }
+        .signup-form label {
+            font-weight: normal;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .signup-form input[type="checkbox"] {
+            margin-top: 0.2rem;
+        }
+        .signup-form .btn {
+            font-size: 16px;
+            font-weight: bold;
+            background: #161df0;
+            border: none;
+            margin-top: 2rem;
+            min-width: 140px;
+            transition: background-color 0.3s ease;
+        }
+        .signup-form .btn:hover, .signup-form .btn:focus {
+            background: #41cba9;
+            outline: none;
+        }
+        .signup-form a {
+            color: #2b04ff;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .signup-form a:hover {
+            text-decoration: none;
+            color: #555;
+        }
+		.signup-form form a {
+            color: #5cd3b4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .signup-form form a:hover {
+            text-decoration: underline;
+            color: #333;
+        }
+        .signup-form .text-center {
+            margin-top: 2rem;
+        }
+        .alert {
+            margin-bottom: 2rem;
+        }
+
+    </style>
+{% endblock %}
+{% block nav-global %}
+  {% include "library/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-success text-center mt-3" role="alert">
+            Войдите в систему как администратор!
+        </div>
+        <div class="signup-form">
+            <form method="post">
+                {% csrf_token %}
+                <h2>Логин администратора</h2>
+                {% for field in form %}
+                    <div class="mb-3">  <!-- Bootstrap 5 class -->
+                        <label class="form-label">{{ field.label_tag }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary btn-lg">Авторизоваться</button>
+            </form>
+            <div class="text-center">
+                У вас нет учетной записи? <a href="adminsignup">Зарегистрируйтесь здесь</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
