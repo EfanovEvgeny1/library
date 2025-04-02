@@ -17,6 +17,10 @@ class StudentExtra(models.Model):
     @property
     def getuserid(self):
         return self.user.id
+    
+    class Meta:
+        verbose_name = 'Студент'
+        verbose_name_plural = 'Студенты'
 
 
 class Book(models.Model):
@@ -34,6 +38,10 @@ class Book(models.Model):
     category=models.CharField(max_length=30,choices=catchoice,default='education')
     def __str__(self):
         return str(self.name)+"["+str(self.isbn)+']'
+    
+    class Meta:
+        verbose_name = 'Книга'
+        verbose_name_plural = 'Книги'
 
 
 def get_expiry():
@@ -45,5 +53,10 @@ class IssuedBook(models.Model):
     expirydate = models.DateField(default=get_expiry)
 
     def __str__(self):
-        return f"{self.student.get_name} - {self.book.name}"
+        return f"{self.enrollment.get_name} - {self.isbn.name}"
+
+    
+    class Meta:
+        verbose_name = 'Выпущенная книга'
+        verbose_name_plural = 'Выпущенные книги'
 
